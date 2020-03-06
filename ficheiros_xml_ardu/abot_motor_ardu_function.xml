@@ -1,0 +1,33 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="motor_configurar" id="mOX41XQ/D6~b#Z9qhGUz" x="18" y="27">
+    <field name="MOTOR_NAME">motor_esquerdo</field>
+    <field name="en">5</field>
+    <field name="in_1">6</field>
+    <field name="in_2">7</field>
+  </block>
+  <block type="motor_configurar" id="z]T-STF){aOwaUXRFw}=" x="290" y="28">
+    <field name="MOTOR_NAME">motor_direito</field>
+    <field name="en">10</field>
+    <field name="in_1">9</field>
+    <field name="in_2">8</field>
+  </block>
+  <block type="procedures_defnoreturn" id="7U0GtlN:nb0eBdlAJzv`" x="69" y="155">
+    <field name="NAME">forward</field>
+    <comment pinned="false" h="80" w="160">Avançar o robot com os dois motores na velocidade máxima</comment>
+    <statement name="STACK">
+      <block type="motor_avancar" id="TRu,0e8BxvkO@zXPO4jR">
+        <field name="MOTOR_NAME">motor_esquerdo</field>
+        <field name="vel">255</field>
+        <next>
+          <block type="motor_avancar" id="JUKrYQ,e@Ax`/?^,1LLq">
+            <field name="MOTOR_NAME">motor_direito</field>
+            <field name="vel">255</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_callnoreturn" id="uIC_+:3xaR9i9Rv#02kI" x="80" y="273">
+    <mutation name="forward"></mutation>
+  </block>
+</xml>
