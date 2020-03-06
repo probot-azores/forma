@@ -1,0 +1,24 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="motor_configurar" id="mOX41XQ/D6~b#Z9qhGUz" x="18" y="27">
+    <field name="MOTOR_NAME">motor_esquerdo</field>
+    <field name="en">5</field>
+    <field name="in_1">6</field>
+    <field name="in_2">7</field>
+  </block>
+  <block type="motor_configurar" id="z]T-STF){aOwaUXRFw}=" x="290" y="28">
+    <field name="MOTOR_NAME">motor_direito</field>
+    <field name="en">10</field>
+    <field name="in_1">9</field>
+    <field name="in_2">8</field>
+  </block>
+  <block type="motor_avancar" id="TRu,0e8BxvkO@zXPO4jR" x="85" y="184">
+    <field name="MOTOR_NAME">motor_esquerdo</field>
+    <field name="vel">255</field>
+    <next>
+      <block type="motor_avancar" id="JUKrYQ,e@Ax`/?^,1LLq">
+        <field name="MOTOR_NAME">motor_direito</field>
+        <field name="vel">255</field>
+      </block>
+    </next>
+  </block>
+</xml>
