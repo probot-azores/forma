@@ -1,12 +1,12 @@
 // Left Motor PINS
-# define EnLeft 5
-# define In1Left 7
-# define In2Left 6
+#define EnLeft 5
+#define In1Left 7
+#define In2Left 6
 
 //Right Motor PINS
-# define EnRight 10
-# define In1Right 8
-# define In2Right 9
+#define EnRight 10
+#define In1Right 8
+#define In2Right 9
 
 #define ledverde 22
 #define ledazul 24
