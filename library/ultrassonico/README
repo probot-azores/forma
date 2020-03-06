@@ -1,0 +1,13 @@
+Biblioteca com funções para sensor
+ultrassonico AzoresBot
+
+Exemplo:
+
+#include <Sensorultra.h>
+
+Sensorultra ultra(3,4);
+
+void loop() {
+  ultra.ultrasonico(40); //(distância ao obstáculo em cm)
+
+}
