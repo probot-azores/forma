@@ -1,0 +1,16 @@
+Biblioteca com funções para controlo
+dos motores do AzoresBot
+
+avancar();
+recuar();
+parar();
+
+Exemplo:
+#include <Motor.h>
+Motor motor_direito(10,9,8); - (En,In1,In2)
+Motor motor_esquerdo(5,6,7); - (En,In3,In4)
+
+void loop(){
+motor_direito.avancar(255); - (velocidade, PWM)
+motor_esquerdo.avancar(255); - (velocidade, PWM)
+}
