@@ -1,0 +1,413 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="color_sensor_configurar" id="dCb}@|zDZh.=?p5D4y3c" x="-1" y="-329">
+    <field name="RGB_NAME">rgb</field>
+    <field name="s0">44</field>
+    <field name="s1">42</field>
+    <field name="s2">40</field>
+    <field name="s3">38</field>
+    <field name="out">36</field>
+    <field name="freq">2</field>
+  </block>
+  <block type="motor_configurar" id="#iND*,k_rXA%W[r/XFvx" x="274" y="-320">
+    <field name="MOTOR_NAME">motor_esq</field>
+    <field name="en">5</field>
+    <field name="in_1">6</field>
+    <field name="in_2">7</field>
+  </block>
+  <block type="motor_configurar" id="_4U2*!9=Ttq5Qr[A`*uJ" x="517" y="-320">
+    <field name="MOTOR_NAME">motor_dir</field>
+    <field name="en">10</field>
+    <field name="in_1">8</field>
+    <field name="in_2">9</field>
+  </block>
+  <block type="procedures_defnoreturn" id="5asI%M,U76kajAzkeO#j" x="4" y="-142">
+    <field name="NAME">avancar</field>
+    <comment pinned="false" h="80" w="160">Descreva esta função...</comment>
+    <statement name="STACK">
+      <block type="motor_avancar" id="Br#3eZH;s=|m7?sDmGo%">
+        <field name="MOTOR_NAME">motor_esq</field>
+        <field name="vel">130</field>
+        <next>
+          <block type="motor_avancar" id="]rWdIB8)f`FhZrwsUkJI">
+            <field name="MOTOR_NAME">motor_dir</field>
+            <field name="vel">130</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="(y#tSpK5#NcE0cG`YZ/x" x="442" y="-141">
+    <field name="NAME">virar_esquerda</field>
+    <comment pinned="false" h="80" w="160">Descreva esta função...</comment>
+    <statement name="STACK">
+      <block type="motor_recuar" id="RKZ7EHmIg}QlzNapk5qj">
+        <field name="MOTOR_NAME">motor_esq</field>
+        <field name="vel">80</field>
+        <next>
+          <block type="motor_avancar" id="0gX9*+Sy}PkhMA0AcWKK">
+            <field name="MOTOR_NAME">motor_dir</field>
+            <field name="vel">255</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="HTnp?A}Mbo16oFIo?plS" x="-3" y="-35">
+    <field name="NAME">virar_direita</field>
+    <comment pinned="false" h="80" w="160">Descreva esta função...</comment>
+    <statement name="STACK">
+      <block type="motor_recuar" id="1*X`7?~%K]~W3Wgg+CfP">
+        <field name="MOTOR_NAME">motor_dir</field>
+        <field name="vel">80</field>
+        <next>
+          <block type="motor_avancar" id="rf{qXsF^NKNC=jo`J%hX">
+            <field name="MOTOR_NAME">motor_dir</field>
+            <field name="vel">255</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="XkXmD%Lb+VS`3D=%M1~n" x="441" y="-43">
+    <field name="NAME">parar</field>
+    <comment pinned="false" h="80" w="160">Descreva esta função...</comment>
+    <statement name="STACK">
+      <block type="motor_parar" id="{982yE+o|ahy*[cIfUfG">
+        <field name="MOTOR_NAME">motor_esq</field>
+        <next>
+          <block type="motor_parar" id="GmJW)0N3W@`tCcRe#g]Y">
+            <field name="MOTOR_NAME">motor_dir</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="cores_registar" id="*_EGL[*5/AOtY|CXp:`." x="174" y="131">
+    <field name="RGB_NAME">rgb</field>
+    <field name="RED">red</field>
+    <field name="GREEN">green</field>
+    <field name="BLUE">blue</field>
+    <next>
+      <block type="variables_set" id="[f,qx4pUmdZVV)E9P}t9">
+        <field name="VAR">sesq</field>
+        <value name="VALUE">
+          <block type="io_digitalread" id="}{-ygnEvAW]8IDJW[.fs">
+            <field name="PIN">48</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="e]/0/03|oto4w/.#Tu@]">
+            <field name="VAR">scent</field>
+            <value name="VALUE">
+              <block type="io_digitalread" id="sv*+}?pK5z,IojL?R{6~">
+                <field name="PIN">50</field>
+              </block>
+            </value>
+            <next>
+              <block type="variables_set" id="(9#gmo7AOnWxWM%;D6Dg">
+                <field name="VAR">sdir</field>
+                <value name="VALUE">
+                  <block type="io_digitalread" id="xI5)S!2mARKT0[fPz6d)">
+                    <field name="PIN">52</field>
+                  </block>
+                </value>
+                <next>
+                  <block type="controls_if" id="{A6et/-B8wH%|_jz(1,m">
+                    <mutation elseif="5" else="1"></mutation>
+                    <value name="IF0">
+                      <block type="logic_operation" id="?#FYof{iXgC0tDW](9);">
+                        <field name="OP">AND</field>
+                        <value name="A">
+                          <block type="logic_compare" id="0aW*Yj,.wb^;7D8mAcXu">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="m08%WoHQK9R8`G5|jq]{">
+                                <field name="VAR">scent</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="OtP!N%*QMEgr`;0/CJS*">
+                                <field name="NUM">1</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_operation" id="}WRFu}ru]GA#-IeX(F@#">
+                            <field name="OP">AND</field>
+                            <value name="A">
+                              <block type="logic_compare" id="_(-TDG*EFx`U|(2)E?H)">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="3/DV9-+}yrmM~^Z0Z-S`">
+                                    <field name="VAR">sdir</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="zVpXziu53j)Me_hy?%T@">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_compare" id="=y-luijTPf}pHXgtsBcI">
+                                <field name="OP">EQ</field>
+                                <value name="A">
+                                  <block type="variables_get" id="WABE9~+wD?4d:c50Y8);">
+                                    <field name="VAR">sesq</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="math_number" id="5`TgJvXs]~=u9M}6TkjI">
+                                    <field name="NUM">0</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO0">
+                      <block type="procedures_callnoreturn" id="eX-mWZ5q^,sLJ|!uT=:G">
+                        <mutation name="avancar"></mutation>
+                      </block>
+                    </statement>
+                    <value name="IF1">
+                      <block type="logic_compare" id="W|l}iDD,:O;hm1.ugA7u">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="zsB;PVmQgR%|y{omAYZr">
+                            <field name="VAR">sdir</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="jnEZi/ks?t]JQN+!4|HB">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO1">
+                      <block type="procedures_callnoreturn" id="y]7#v.%yM!F|Wn0nI9m4">
+                        <mutation name="virar_direita"></mutation>
+                      </block>
+                    </statement>
+                    <value name="IF2">
+                      <block type="logic_compare" id="aA|{yyIolwL~=/.~unww">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="c?WT7z}IC8]K~P_EO^c%">
+                            <field name="VAR">sesq</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="8x0vj[SF-aU@P{6]OkRm">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO2">
+                      <block type="procedures_callnoreturn" id="9f5EZL!|Z[5m.sl7XFFY">
+                        <mutation name="virar_esquerda"></mutation>
+                      </block>
+                    </statement>
+                    <value name="IF3">
+                      <block type="logic_operation" id="ZNCXq_a:a1*B6-Fw-3|T">
+                        <field name="OP">AND</field>
+                        <value name="A">
+                          <block type="logic_compare" id="YeYLTXZaOO,V+Cf5qN[t">
+                            <field name="OP">LT</field>
+                            <value name="A">
+                              <block type="variables_get" id="t3tHahMyA=qQu0]i:lHm">
+                                <field name="VAR">red</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="Xu,%*E,5G:J7?d(.-A@f">
+                                <field name="VAR">blue</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_compare" id="~n%6OfG7{M{Ckc6b/7-)">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="E5KI8ij[1fLpK8}vRuzH">
+                                <field name="VAR">green</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="0Fd@tsVO4%EEH1-T:_M+">
+                                <field name="VAR">blue</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO3">
+                      <block type="procedures_callnoreturn" id="~7l.S/HEh(Ku1@qo0y0z">
+                        <mutation name="parar"></mutation>
+                        <next>
+                          <block type="time_delay" id="/k0B8pBgWpCU01u-]kS9">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="b^lQh/|zgVer,77XIG7G">
+                                <field name="NUM">2000</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="procedures_callnoreturn" id="M+[IJ[mF(Rf|KP!3jUx3">
+                                <mutation name="avancar"></mutation>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <value name="IF4">
+                      <block type="logic_operation" id="_8aKwrre4(V(MmaMVk+.">
+                        <field name="OP">AND</field>
+                        <value name="A">
+                          <block type="logic_compare" id="Fnj:YW9NmC^KMT#+3OaH">
+                            <field name="OP">LT</field>
+                            <value name="A">
+                              <block type="variables_get" id="%Qb|0Xmn,3Yk[w)-3A}T">
+                                <field name="VAR">blue</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="su/ek~{DnHFy.F`F/miC">
+                                <field name="VAR">red</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_operation" id="]|nM^;nK_wcY(g/K05vh">
+                            <field name="OP">AND</field>
+                            <value name="A">
+                              <block type="logic_compare" id="*nH%+fPyu,XL%.EER,iS">
+                                <field name="OP">LT</field>
+                                <value name="A">
+                                  <block type="variables_get" id="IGN4dDx|led@fy3`Fnjy">
+                                    <field name="VAR">blue</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="variables_get" id="`l!@l]6y2_v8Io=V^=?N">
+                                    <field name="VAR">green</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="logic_compare" id="Zt5)T!/C|RSPf]c.fNbL">
+                                <field name="OP">LT</field>
+                                <value name="A">
+                                  <block type="variables_get" id="SD`04lk6iAd}#x!Qdnth">
+                                    <field name="VAR">green</field>
+                                  </block>
+                                </value>
+                                <value name="B">
+                                  <block type="variables_get" id="bn}Ve4KTBgpC9_ipWbKF">
+                                    <field name="VAR">red</field>
+                                  </block>
+                                </value>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO4">
+                      <block type="procedures_callnoreturn" id=":?R02R*WJI2#Ar_*c.?c">
+                        <mutation name="parar"></mutation>
+                        <next>
+                          <block type="time_delay" id="+C1|,:v6weFV9nFovYGj">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="zUB])p!X#,2Ue5GzC#(2">
+                                <field name="NUM">3000</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="procedures_callnoreturn" id="E3O,4V8ke@uI3YH=%Iig">
+                                <mutation name="avancar"></mutation>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <value name="IF5">
+                      <block type="logic_operation" id="x]=[e5^12%WrYG]0eGQU">
+                        <field name="OP">AND</field>
+                        <value name="A">
+                          <block type="logic_compare" id="3WmuA_3DOu-@}|#o-V(6">
+                            <field name="OP">GT</field>
+                            <value name="A">
+                              <block type="variables_get" id="nKvu#s7xWIn`.Nf0adoW">
+                                <field name="VAR">red</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="Qt/LmVE^ZCTDXsRrTB%i">
+                                <field name="VAR">green</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_compare" id="R[_.nDB}uqXEnkS0?LiE">
+                            <field name="OP">GTE</field>
+                            <value name="A">
+                              <block type="variables_get" id="ZEbR,/j4yu#tJSNN?y~%">
+                                <field name="VAR">blue</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="variables_get" id="wDW[:_kcvHywn7j=|X`;">
+                                <field name="VAR">green</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <statement name="DO5">
+                      <block type="procedures_callnoreturn" id="WKfPLe|te6eJK.*~a3+o">
+                        <mutation name="parar"></mutation>
+                        <next>
+                          <block type="time_delay" id="nyNPk#n_~`%25~oS@t)9">
+                            <value name="DELAY_TIME_MILI">
+                              <block type="math_number" id="1^1JFDnTzvbZ3iuDNi(m">
+                                <field name="NUM">5000</field>
+                              </block>
+                            </value>
+                            <next>
+                              <block type="procedures_callnoreturn" id="s(z;([zk0/(!6:vmKcT)">
+                                <mutation name="avancar"></mutation>
+                              </block>
+                            </next>
+                          </block>
+                        </next>
+                      </block>
+                    </statement>
+                    <statement name="ELSE">
+                      <block type="procedures_callnoreturn" id="+Q)VkyXk4.WVVZ6bf8T,">
+                        <mutation name="avancar"></mutation>
+                      </block>
+                    </statement>
+                  </block>
+                </next>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+</xml>
