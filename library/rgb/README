@@ -9,7 +9,7 @@ int red;
 int green;
 int blue;
 
-Rgbabot rgb(44,42,40,38,36,2); (S0,S1,S2,S3,Out,freq) - A freq pode ser 2,20,100
+Rgbabot rgb(44,42,40,38,36,2); //(S0,S1,S2,S3,Out,freq) - A freq pode ser 2,20,100
  
  void loop(){
  rgb.registar(red,green,blue);
