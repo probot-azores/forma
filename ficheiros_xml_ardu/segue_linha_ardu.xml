@@ -1,0 +1,200 @@
+<xml xmlns="http://www.w3.org/1999/xhtml">
+  <block type="motor_configurar" id="#iND*,k_rXA%W[r/XFvx" x="102" y="17">
+    <field name="MOTOR_NAME">motor_esq</field>
+    <field name="en">5</field>
+    <field name="in_1">6</field>
+    <field name="in_2">7</field>
+  </block>
+  <block type="motor_configurar" id="_4U2*!9=Ttq5Qr[A`*uJ" x="335" y="19">
+    <field name="MOTOR_NAME">motor_dir</field>
+    <field name="en">10</field>
+    <field name="in_1">8</field>
+    <field name="in_2">9</field>
+  </block>
+  <block type="variables_set" id="[f,qx4pUmdZVV)E9P}t9" x="107" y="133">
+    <field name="VAR">sesq</field>
+    <value name="VALUE">
+      <block type="io_digitalread" id="}{-ygnEvAW]8IDJW[.fs">
+        <field name="PIN">48</field>
+      </block>
+    </value>
+    <next>
+      <block type="variables_set" id="e]/0/03|oto4w/.#Tu@]">
+        <field name="VAR">scent</field>
+        <value name="VALUE">
+          <block type="io_digitalread" id="sv*+}?pK5z,IojL?R{6~">
+            <field name="PIN">50</field>
+          </block>
+        </value>
+        <next>
+          <block type="variables_set" id="(9#gmo7AOnWxWM%;D6Dg">
+            <field name="VAR">sdir</field>
+            <value name="VALUE">
+              <block type="io_digitalread" id="xI5)S!2mARKT0[fPz6d)">
+                <field name="PIN">52</field>
+              </block>
+            </value>
+            <next>
+              <block type="controls_if" id="{A6et/-B8wH%|_jz(1,m">
+                <mutation elseif="2" else="1"></mutation>
+                <value name="IF0">
+                  <block type="logic_operation" id="?#FYof{iXgC0tDW](9);">
+                    <field name="OP">AND</field>
+                    <value name="A">
+                      <block type="logic_compare" id="0aW*Yj,.wb^;7D8mAcXu">
+                        <field name="OP">EQ</field>
+                        <value name="A">
+                          <block type="variables_get" id="m08%WoHQK9R8`G5|jq]{">
+                            <field name="VAR">scent</field>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="math_number" id="OtP!N%*QMEgr`;0/CJS*">
+                            <field name="NUM">1</field>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="logic_operation" id="}WRFu}ru]GA#-IeX(F@#">
+                        <field name="OP">AND</field>
+                        <value name="A">
+                          <block type="logic_compare" id="_(-TDG*EFx`U|(2)E?H)">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="3/DV9-+}yrmM~^Z0Z-S`">
+                                <field name="VAR">sdir</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="zVpXziu53j)Me_hy?%T@">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                        <value name="B">
+                          <block type="logic_compare" id="=y-luijTPf}pHXgtsBcI">
+                            <field name="OP">EQ</field>
+                            <value name="A">
+                              <block type="variables_get" id="WABE9~+wD?4d:c50Y8);">
+                                <field name="VAR">sesq</field>
+                              </block>
+                            </value>
+                            <value name="B">
+                              <block type="math_number" id="5`TgJvXs]~=u9M}6TkjI">
+                                <field name="NUM">0</field>
+                              </block>
+                            </value>
+                          </block>
+                        </value>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO0">
+                  <block type="procedures_callnoreturn" id="eX-mWZ5q^,sLJ|!uT=:G">
+                    <mutation name="avancar"></mutation>
+                  </block>
+                </statement>
+                <value name="IF1">
+                  <block type="logic_compare" id="W|l}iDD,:O;hm1.ugA7u">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="zsB;PVmQgR%|y{omAYZr">
+                        <field name="VAR">sdir</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="jnEZi/ks?t]JQN+!4|HB">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO1">
+                  <block type="procedures_callnoreturn" id="y]7#v.%yM!F|Wn0nI9m4">
+                    <mutation name="virar_direita"></mutation>
+                  </block>
+                </statement>
+                <value name="IF2">
+                  <block type="logic_compare" id="aA|{yyIolwL~=/.~unww">
+                    <field name="OP">EQ</field>
+                    <value name="A">
+                      <block type="variables_get" id="c?WT7z}IC8]K~P_EO^c%">
+                        <field name="VAR">sesq</field>
+                      </block>
+                    </value>
+                    <value name="B">
+                      <block type="math_number" id="8x0vj[SF-aU@P{6]OkRm">
+                        <field name="NUM">1</field>
+                      </block>
+                    </value>
+                  </block>
+                </value>
+                <statement name="DO2">
+                  <block type="procedures_callnoreturn" id="9f5EZL!|Z[5m.sl7XFFY">
+                    <mutation name="virar_esquerda"></mutation>
+                  </block>
+                </statement>
+                <statement name="ELSE">
+                  <block type="procedures_callnoreturn" id="+Q)VkyXk4.WVVZ6bf8T,">
+                    <mutation name="avancar"></mutation>
+                  </block>
+                </statement>
+              </block>
+            </next>
+          </block>
+        </next>
+      </block>
+    </next>
+  </block>
+  <block type="procedures_defnoreturn" id="5asI%M,U76kajAzkeO#j" x="107" y="582">
+    <field name="NAME">avancar</field>
+    <comment pinned="false" h="80" w="160">Descreva esta função...</comment>
+    <statement name="STACK">
+      <block type="motor_avancar" id="Br#3eZH;s=|m7?sDmGo%">
+        <field name="MOTOR_NAME">motor_esq</field>
+        <field name="vel">130</field>
+        <next>
+          <block type="motor_avancar" id="]rWdIB8)f`FhZrwsUkJI">
+            <field name="MOTOR_NAME">motor_dir</field>
+            <field name="vel">130</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="(y#tSpK5#NcE0cG`YZ/x" x="106" y="674">
+    <field name="NAME">virar_esquerda</field>
+    <comment pinned="false" h="80" w="160">Descreva esta função...</comment>
+    <statement name="STACK">
+      <block type="motor_recuar" id="RKZ7EHmIg}QlzNapk5qj">
+        <field name="MOTOR_NAME">motor_esq</field>
+        <field name="vel">80</field>
+        <next>
+          <block type="motor_avancar" id="0gX9*+Sy}PkhMA0AcWKK">
+            <field name="MOTOR_NAME">motor_dir</field>
+            <field name="vel">255</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+  <block type="procedures_defnoreturn" id="HTnp?A}Mbo16oFIo?plS" x="106" y="769">
+    <field name="NAME">virar_direita</field>
+    <comment pinned="false" h="80" w="160">Descreva esta função...</comment>
+    <statement name="STACK">
+      <block type="motor_recuar" id="1*X`7?~%K]~W3Wgg+CfP">
+        <field name="MOTOR_NAME">motor_dir</field>
+        <field name="vel">80</field>
+        <next>
+          <block type="motor_avancar" id="rf{qXsF^NKNC=jo`J%hX">
+            <field name="MOTOR_NAME">motor_dir</field>
+            <field name="vel">255</field>
+          </block>
+        </next>
+      </block>
+    </statement>
+  </block>
+</xml>
